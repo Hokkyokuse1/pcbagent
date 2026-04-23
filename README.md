@@ -84,7 +84,7 @@ This is the recommended way for production or tech interviews.
 **Request Headers:**
 - `Content-Type: application/json`
 
-**Request Body Body:**
+**Request Body:**
 ```json
 {
   "description": "A simple 5V to 3.3V voltage regulator using LM1117",
@@ -108,9 +108,43 @@ This is the recommended way for production or tech interviews.
 }
 ```
 
+## 🚀 Deployment (GCP & Firebase)
+
+To host this for free while maintaining "instance per user" isolation and queuing:
+
+### 1. Deploy to Google Cloud Run
+Cloud Run handles the heavy container (KiCad + Podman) and offers a massive free tier.
+
+```bash
+# Build and push the image to Google Artifact Registry
+gcloud builds submit --tag gcr.io/pcbagent/api
+
+# Deploy with Free-Tier limits and Queuing
+# --max-instances=1 ensures zero cost beyond free tier
+# --concurrency=1 forces a queue (one request at a time)
+gcloud run deploy pcbagent-api \
+  --image gcr.io/pcbagent/api \
+  --platform managed \
+  --region us-central1 \
+  --allow-unauthenticated \
+  --max-instances 1 \
+  --concurrency 1 \
+  --memory 2Gi \
+  --cpu 1
+```
+
+### 2. Connect Firebase Hosting
+Firebase Hosting provides a professional domain and SSL.
+
+```bash
+# Initialize and deploy hosting
+firebase deploy --only hosting
+```
+
 ## 🧪 Interview Highlights
 
 - **Isolation Strategy**: Implements per-request container instance spawning using Podman to prevent RCE (Remote Code Execution) vulnerabilities from generated scripts.
+- **Cost & Rate Limiting**: Deployed with **Cloud Run concurrency limits** to simulate a processing queue and strictly enforce free-tier usage.
 - **Retry Mechanism**: Self-healing loops where the agent acts as its own debugger, parsing compiler errors and fixing syntax/logic issues.
 - **Developer Experience**: Comprehensive API documentation, Pydantic validation, and one-command deployment.
 

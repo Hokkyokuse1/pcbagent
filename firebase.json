@@ -1,0 +1,19 @@
+{
+  "hosting": {
+    "public": "agent/web/static",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "run": {
+          "serviceId": "pcbagent-api",
+          "region": "us-central1"
+        }
+      }
+    ]
+  }
+}

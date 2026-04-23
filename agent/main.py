@@ -281,13 +281,14 @@ def main():
 
     # ── Web UI mode ────────────────────────────────────────────────────────
     if args.web:
-        console.print("[bold blue]Starting SKiDL Circuit Agent Web UI...[/bold blue]")
         import uvicorn
+        import os
         sys.path.insert(0, str(Path(__file__).parent))
+        port = int(os.environ.get("PORT", 8765))
         uvicorn.run(
             "web.app:app",
-            host="127.0.0.1",
-            port=8765,
+            host="0.0.0.0",
+            port=port,
             reload=False,
         )
         return
