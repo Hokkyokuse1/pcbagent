@@ -52,9 +52,10 @@ app = FastAPI(title="SKiDL Circuit Agent")
 class GenerateRequest(BaseModel):
     description: str
     planner_model: str = "gemini/gemini-2.5-pro"
-    codegen_model: str = "gemini/gemini-2.5-flash"
     max_retries: int = 8
     user_id: str = "default_user"
+    gemini_api_key: str = None
+    openai_api_key: str = None
 
 class GenerateResponse(BaseModel):
     run_id: str
@@ -83,16 +84,24 @@ async def index(request: Request):
 async def generate(
     request: Request,
     description: str = Form(...),
-    planner_model: str = Form("gemini/gemini-2.5-pro"),
     codegen_model: str = Form("gemini/gemini-2.5-flash"),
     max_retries: int = Form(8),
     user: dict = Depends(get_current_user),
+    gemini_api_key: str = Form(None),
+    openai_api_key: str = Form(None),
 ):
     """Start a circuit generation run and stream progress via SSE."""
     safe_uid = _slugify(user['uid'])
     run_id = f"{datetime.now().strftime('%Y%m%d_%H%M%S')}_{safe_uid}_{_slugify(description[:20])}"
 
     config = load_config()
+    
+    # ── Security: Inject user keys per-request (Hardened against LeakyCLI) ──
+    if gemini_api_key:
+        config["api_keys"]["google"] = gemini_api_key
+    if openai_api_key:
+        config["api_keys"]["openai"] = openai_api_key
+        
     config["models"]["planner"] = planner_model
     config["models"]["codegen"] = codegen_model
     config["models"]["debugger"] = codegen_model
@@ -158,6 +167,13 @@ async def api_generate(req: GenerateRequest, user: dict = Depends(get_current_us
     run_id = f"{timestamp}_{safe_uid}_{_slugify(req.description[:20])}"
 
     config = load_config()
+    
+    # ── Security: Inject user keys per-request ──
+    if req.gemini_api_key:
+        config["api_keys"]["google"] = req.gemini_api_key
+    if req.openai_api_key:
+        config["api_keys"]["openai"] = req.openai_api_key
+        
     config["models"]["planner"] = req.planner_model
     config["models"]["codegen"] = req.codegen_model
     config["models"]["debugger"] = req.codegen_model

@@ -326,6 +326,17 @@
           </div>
         </div>
 
+        <div class="card" style="margin-top: 20px; background: var(--surface2); border-style: dashed;">
+            <label style="color: var(--accent);">🔑 User API Keys (Required)</label>
+            <p style="font-size: 11px; color: var(--muted); margin-bottom: 12px;">
+                Your keys are used ONLY for this request and are NOT stored on the server.
+            </p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                <input type="password" name="gemini_api_key" placeholder="Gemini API Key" class="api-key-input" style="width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 10px; color: var(--text); font-size: 13px;"/>
+                <input type="password" name="openai_api_key" placeholder="OpenAI API Key (Optional)" class="api-key-input" style="width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 10px; color: var(--text); font-size: 13px;"/>
+            </div>
+        </div>
+
         <button type="submit" id="generate-btn">
           <span class="btn-icon">⚡</span> Generate Circuit
         </button>
