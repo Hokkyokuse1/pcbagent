@@ -18,6 +18,32 @@ from fastapi.templating import Jinja2Templates
 from main import load_config, run_pipeline, _slugify
 from core import get_session_usage, reset_session_usage
 from pydantic import BaseModel
+import firebase_admin
+from firebase_admin import auth as firebase_auth, credentials
+from fastapi import Header, HTTPException, Depends
+
+# Initialize Firebase Admin
+try:
+    firebase_admin.get_app()
+except ValueError:
+    # On Cloud Run, it will automatically use the ambient service account
+    firebase_admin.initialize_app()
+
+async def get_current_user(x_authorization: str = Header(None)):
+    if not x_authorization:
+        # For simple web requests, check query param or other means if needed
+        # But for this demo, we expect the X-Authorization header
+        raise HTTPException(status_code=401, detail="Authentication required")
+    
+    if not x_authorization.startswith("Bearer "):
+        raise HTTPException(status_code=401, detail="Invalid token format")
+    
+    token = x_authorization.split("Bearer ")[1]
+    try:
+        decoded_token = firebase_auth.verify_id_token(token)
+        return decoded_token
+    except Exception as e:
+        raise HTTPException(status_code=401, detail=f"Token verification failed: {str(e)}")
 
 app = FastAPI(title="SKiDL Circuit Agent")
 
@@ -60,9 +86,11 @@ async def generate(
     planner_model: str = Form("gemini/gemini-2.5-pro"),
     codegen_model: str = Form("gemini/gemini-2.5-flash"),
     max_retries: int = Form(8),
+    user: dict = Depends(get_current_user),
 ):
     """Start a circuit generation run and stream progress via SSE."""
-    run_id = datetime.now().strftime("%Y%m%d_%H%M%S_") + _slugify(description[:30])
+    safe_uid = _slugify(user['uid'])
+    run_id = f"{datetime.now().strftime('%Y%m%d_%H%M%S')}_{safe_uid}_{_slugify(description[:20])}"
 
     config = load_config()
     config["models"]["planner"] = planner_model
@@ -119,14 +147,14 @@ async def generate(
 
 
 @app.post("/api/v1/generate", response_model=GenerateResponse)
-async def api_generate(req: GenerateRequest):
+async def api_generate(req: GenerateRequest, user: dict = Depends(get_current_user)):
     """
     Programmatic API endpoint to generate a circuit.
     This is a blocking call that returns the final result as JSON.
     """
     # Create a unique run ID based on user and timestamp
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    safe_uid = _slugify(req.user_id)
+    safe_uid = _slugify(user['uid'])
     run_id = f"{timestamp}_{safe_uid}_{_slugify(req.description[:20])}"
 
     config = load_config()

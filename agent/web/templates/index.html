@@ -60,6 +60,35 @@
     header nav { margin-left: auto; display: flex; gap: 16px; }
     header nav a { color: var(--muted); text-decoration: none; font-size: 14px; transition: color .2s; }
     header nav a:hover { color: var(--text); }
+    header .auth-btn {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    header .user-info {
+        display: none;
+        align-items: center;
+        gap: 12px;
+    }
+    header .user-info.visible { display: flex; }
+    header .user-name { font-size: 13px; color: var(--muted); }
+    header .login-prompt {
+        padding: 40px;
+        text-align: center;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        margin-bottom: 24px;
+    }
+    .logged-in-only { display: none; }
+    .logged-in-only.visible { display: block; }
 
     /* ── Main ── */
     main {
@@ -227,6 +256,13 @@
     <nav>
       <a href="/runs" id="history-link">History</a>
       <a href="https://github.com/devbisme/skidl" target="_blank">SKiDL Docs</a>
+      <div id="auth-container">
+          <button id="login-btn" class="auth-btn">Google Sign-In</button>
+          <div id="user-info" class="user-info">
+              <span id="user-display-name" class="user-name"></span>
+              <button id="logout-btn" class="auth-btn">Logout</button>
+          </div>
+      </div>
     </nav>
   </header>
 
@@ -236,7 +272,15 @@
       <p>The agent plans, writes SKiDL Python, runs it, and validates ERC — automatically.</p>
     </div>
 
-    <form id="gen-form">
+    <div id="login-required" class="login-prompt">
+        <p style="margin-bottom: 20px; color: var(--muted);">Please sign in with Google to use the SKiDL Circuit Agent.</p>
+        <button onclick="login()" class="auth-btn" style="margin: 0 auto; padding: 12px 24px; font-size: 15px;">
+            Continue with Google
+        </button>
+    </div>
+
+    <div id="auth-guarded-content" class="logged-in-only">
+        <form id="gen-form">
       <div class="card">
         <label for="description">Circuit Description</label>
         <textarea
@@ -294,11 +338,59 @@
         <div class="log-box" id="log-box"></div>
       </div>
     </div>
+    </div>
   </main>
 
   <footer>Built with SKiDL · KiCad 5 · FastAPI · litellm</footer>
 
+  <!-- Firebase App (the core Firebase SDK) -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+
   <script>
+    // Firebase Configuration - Users should ideally set this via environment or a static config
+    // For the tech interview demo, we assume the pcbagent project settings
+    const firebaseConfig = {
+      projectId: "pcbagent",
+      authDomain: "pcbagent.firebaseapp.com",
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    const auth = firebase.auth();
+    const provider = new firebase.auth.GoogleAuthProvider();
+
+    let currentUser = null;
+
+    function login() {
+        auth.signInWithPopup(provider);
+    }
+
+    document.getElementById('login-btn').onclick = login;
+    document.getElementById('logout-btn').onclick = () => auth.signOut();
+
+    auth.onAuthStateChanged(user => {
+        currentUser = user;
+        const loginBtn = document.getElementById('login-btn');
+        const userInfo = document.getElementById('user-info');
+        const userDisplay = document.getElementById('user-display-name');
+        const loginPrompt = document.getElementById('login-required');
+        const guardedContent = document.getElementById('auth-guarded-content');
+
+        if (user) {
+            loginBtn.style.display = 'none';
+            userInfo.classList.add('visible');
+            userDisplay.textContent = user.displayName || user.email;
+            loginPrompt.style.display = 'none';
+            guardedContent.classList.add('visible');
+        } else {
+            loginBtn.style.display = 'flex';
+            userInfo.classList.remove('visible');
+            loginPrompt.style.display = 'block';
+            guardedContent.classList.remove('visible');
+        }
+    });
+
     function setExample(el) {
       document.getElementById('description').value = el.textContent.trim();
     }
@@ -321,12 +413,30 @@
       e.preventDefault();
       const data = new FormData(form);
 
+      if (!currentUser) {
+          alert("Please sign in first");
+          return;
+      }
+
       btn.disabled = true;
       btn.innerHTML = '<span class="btn-icon pulsing">⏳</span> Generating...';
       progressSection.classList.add('visible');
       logBox.innerHTML = '';
 
-      const response = await fetch('/generate', { method: 'POST', body: data });
+      const idToken = await currentUser.getIdToken();
+
+      // Pass ID token in the URL or as a header. SSE (StreamingResponse) is 
+      // tricky with headers in standard EventSource, so we pass it as a param.
+      const params = new URLSearchParams(data);
+      params.append('id_token', idToken);
+
+      const response = await fetch('/generate', { 
+          method: 'POST', 
+          headers: {
+              'X-Authorization': 'Bearer ' + idToken
+          },
+          body: data 
+      });
       const reader = response.body.getReader();
       const decoder = new TextDecoder();
 

@@ -143,6 +143,7 @@ firebase deploy --only hosting
 
 ## 🧪 Interview Highlights
 
+- **User Authentication**: Integrated with **Firebase Auth (Google Sign-In)** to manage user sessions and protect API resources.
 - **Isolation Strategy**: Implements per-request container instance spawning using Podman to prevent RCE (Remote Code Execution) vulnerabilities from generated scripts.
 - **Cost & Rate Limiting**: Deployed with **Cloud Run concurrency limits** to simulate a processing queue and strictly enforce free-tier usage.
 - **Retry Mechanism**: Self-healing loops where the agent acts as its own debugger, parsing compiler errors and fixing syntax/logic issues.
