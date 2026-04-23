@@ -1,0 +1,8 @@
+(sym_lib_table
+  (lib (name "ESP32_S3_WROOM_2")
+       (type "KiCad")
+       (uri "${KIPRJMOD}/ESP32-S3-WROOM-2.kicad_sym")
+       (options "")
+       (descr "ESP32-S3-WROOM-2 Symbol"))
+)
+

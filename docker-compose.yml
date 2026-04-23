@@ -1,0 +1,24 @@
+services:
+  agent-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: skidl-agent:latest
+    container_name: skidl-api
+    ports:
+      - "8765:8765"
+    volumes:
+      - ./agent/output:/app/agent/output
+      # Optional: mount podman/docker socket for DinD/DooD
+      # - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - USE_PODMAN=false # Set to true if you have podman installed on the host and socket mounted
+      - PODMAN_IMAGE=skidl-agent:latest
+    restart: unless-stopped
+
+networks:
+  default:
+    name: skidl-network

@@ -1,0 +1,49 @@
+# SKiDL Circuit Agent — Configuration
+# ─────────────────────────────────────────────────────────────────
+# API keys are read from environment variables by default.
+# Override by setting values directly here (not recommended for secrets).
+
+models:
+  # Strong reasoning model — used for circuit planning
+  # Options: "claude-3-7-sonnet-20250219", "gpt-4o", "gemini/gemini-2.5-pro", "gemini/gemini-2.5-flash"
+  #          "ollama/llama3.3:70b", "openrouter/anthropic/claude-3.7-sonnet"
+  planner: "gemini/gemini-2.5-pro"
+
+  # Coding model — used for SKiDL code generation and debugging
+  codegen: "gemini/gemini-2.5-flash"
+  debugger: "gemini/gemini-2.5-flash"
+
+# API keys — prefer environment variables
+api_keys:
+  openai: "${OPENAI_API_KEY}"
+  anthropic: "${ANTHROPIC_API_KEY}"
+  google: "${GEMINI_API_KEY}"
+  groq: "${GROQ_API_KEY}"
+  openrouter: "${OPENROUTER_API_KEY}"
+  # For Ollama (local), no key needed — just set base_url:
+  ollama_base_url: "http://localhost:11434"
+
+runner:
+  max_retries: 8          # Max auto-fix attempts before giving up
+  escalate_at: 5          # After this many failures, pause and ask user
+  timeout_seconds: 90     # Max time per script execution
+  work_dir: "/tmp/skidl_agent_runs"  # Sandboxed execution directory
+  use_podman: false                  # Whether to run scripts in Podman containers
+  podman_image: "skidl-agent:latest" # Image to use for workers
+
+paths:
+  kicad_symbols: "/usr/share/kicad/symbols"
+  kicad_footprints: "/usr/share/kicad/footprints"
+  output_dir: "./output"
+  reference_impl: "../rtd/main.py"         # Used as few-shot example in prompts
+  native_parts_lib: "../rtd/main_lib_sklib.py"  # Seeded custom parts registry
+
+schematic:
+  title: "Generated Circuit"
+  author: "SKiDL Agent"
+  flatness: 0.5
+  retries: 20
+
+web:
+  host: "127.0.0.1"
+  port: 8765

@@ -1,0 +1,555 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns:s="https://github.com/nturley/netlistsvg">
+  <s:properties
+    constants="false"
+    splitsAndJoins="false"
+    genericsLaterals="true">
+    <s:layoutEngine 
+                org.eclipse.elk.layered.spacing.nodeNodeBetweenLayers="5"
+                org.eclipse.elk.layered.compaction.postCompaction.strategy="4"
+                org.eclipse.elk.spacing.nodeNode="50"
+                org.eclipse.elk.direction="DOWN"
+             />
+  </s:properties>
+<style>
+svg {
+  stroke: #000;
+  fill: none;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+text {
+  fill: #000;
+  stroke: none;
+  font-size: 10px;
+  font-weight: bold;
+  font-family: "Courier New", monospace;
+}
+.skidl_text {
+  fill: #999;
+  stroke: none;
+  font-weight: bold;
+  font-family: consolas, "Courier New", monospace;
+}
+.pin_num_text {
+    fill: #840000;
+}
+.pin_name_text {
+    fill: #008484;
+}
+.net_name_text {
+    font-style: italic;
+    fill: #840084;
+}
+.part_text {
+    fill: #840000;
+}
+.part_ref_text {
+    fill: #008484;
+}
+.part_name_text {
+    fill: #008484;
+}
+.pen_fill {
+    fill: #840000;
+}
+.background_fill {
+    fill: #FFFFC2
+}
+.nodelabel {
+  text-anchor: middle;
+}
+.inputPortLabel {
+  text-anchor: end;
+}
+.splitjoinBody {
+  fill: #000;
+}
+.symbol {
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  stroke: #840000;
+}
+.detail {
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  fill: #000;
+}
+</style>
+
+<!-- signal -->
+<g s:type="inputExt" s:width="30" s:height="20" transform="translate(0,0)">
+  <text x="-2" y="12" text-anchor='end' class="$cell_id pin_name_text" s:attribute="ref">input</text>
+  <s:alias val="$_inputExt_"/>
+  <path d="M0,0 V20 H15 L30,10 15,0 Z" class="$cell_id symbol"/>
+  <g s:x="30" s:y="10" s:pid="Y" s:position="right"/>
+</g>
+
+<g s:type="outputExt" s:width="30" s:height="20" transform="translate(0,0)">
+  <text x="32" y="12" class="$cell_id pin_name_text" s:attribute="ref">output</text>
+  <s:alias val="$_outputExt_"/>
+  <path d="M30,0 V20 H15 L0,10 15,0 Z" class="$cell_id symbol"/>
+  <g s:x="0" s:y="10" s:pid="A" s:position="left"/>
+</g>
+<!-- signal -->
+
+<!-- builtin -->
+<g s:type="generic" s:width="30" s:height="40" transform="translate(0,0)">
+  <text x="15" y="-4" class="nodelabel $cell_id" s:attribute="ref">generic</text>
+  <rect width="30" height="40" x="0" y="0" s:generic="body" class="$cell_id"/>
+  <g transform="translate(30,10)"
+     s:x="30" s:y="10" s:pid="out0" s:position="right">
+    <text x="5" y="-4" class="$cell_id">out0</text>
+  </g>
+  <g transform="translate(30,30)"
+     s:x="30" s:y="30" s:pid="out1" s:position="right">
+    <text x="5" y="-4" class="$cell_id">out1</text>
+  </g>
+  <g transform="translate(0,10)"
+     s:x="0" s:y="10" s:pid="in0" s:position="left">
+      <text x="-3" y="-4" class="inputPortLabel $cell_id">in0</text>
+  </g>
+  <g transform="translate(0,30)"
+     s:x="0" s:y="30" s:pid="in1" s:position="left">
+    <text x="-3" y="-4" class="inputPortLabel $cell_id">in1</text>
+  </g>
+</g>
+<!-- builtin -->
+<g s:type="PWR_FLAG_1_" s:width="24.0" s:height="42.0" transform="translate(12.0,30.0)" >
+<s:alias val="PWR_FLAG_1_"/>
+<path d="M 0.0 0.0 L 0.0 -15.0 L -12.0 -22.5 L 0.0 -30.0 L 12.0 -22.5 L 0.0 -15.0" style="stroke-width:1.0" class="$cell_id symbol " />
+<path d="M 0.0 12.0 L 0.0 0.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='part_name_text' text-anchor='middle' x='0.0' y='-45.0' transform='rotate(0 0.0 -45.0) translate(0.0 7.5)' style='font-size:15.0px' s:attribute="value" > X </text>
+<g s:x="0.0" s:y="12.0" s:pid="1" s:position="bottom"/>
+</g>
+<g s:type="R_1_" s:width="24.0" s:height="114.0" transform="translate(12.0,57.0)" >
+<s:alias val="R_1_"/>
+<rect x="-12.0" y="-30.0" width="24.0" height="60.0" style="stroke-width:3.0" class="$cell_id symbol " />
+<path d="M 0.0 -57.0 L 0.0 -30.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<path d="M 0.0 57.0 L 0.0 30.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='part_ref_text' text-anchor='middle' x='24.0' y='0.0' transform='rotate(-90 24.0 0.0) translate(0.0 7.5)' style='font-size:15.0px' s:attribute="ref" > X </text>
+<text class='part_name_text' text-anchor='middle' x='0.0' y='0.0' transform='rotate(-90 0.0 0.0) translate(0.0 7.5)' style='font-size:15.0px' s:attribute="value" > X </text>
+<g s:x="0.0" s:y="-57.0" s:pid="1" s:position="top"/>
+<g s:x="0.0" s:y="57.0" s:pid="2" s:position="bottom"/>
+</g>
+<g s:type="LM2902_1_" s:width="186.0" s:height="120.0" transform="translate(93.0,60.0)" >
+<s:alias val="LM2902_1_"/>
+<path d="M -60.0 -60.0 L 60.0 0.0 L -60.0 60.0 L -60.0 -60.0" style="stroke-width:3.0" class="$cell_id symbol background_fill" />
+<path d="M 93.0 0.0 L 60.0 0.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='60.0' y='0.0' transform='rotate(0 60.0 0.0) translate(1.5 -2.25)' style='font-size:15.0px'  > 1 </text>
+<path d="M -93.0 30.0 L -60.0 30.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-60.0' y='30.0' transform='rotate(0 -60.0 30.0) translate(-1.5 -2.25)' style='font-size:15.0px'  > 2 </text>
+<text class='pin_name_text' text-anchor='start' x='-60.0' y='30.0' transform='rotate(0 -60.0 30.0) translate(1.5 3.0)' style='font-size:15.0px'  > - </text>
+<path d="M -93.0 -30.0 L -60.0 -30.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-60.0' y='-30.0' transform='rotate(0 -60.0 -30.0) translate(-1.5 -2.25)' style='font-size:15.0px'  > 3 </text>
+<text class='pin_name_text' text-anchor='start' x='-60.0' y='-30.0' transform='rotate(0 -60.0 -30.0) translate(1.5 3.0)' style='font-size:15.0px'  > + </text>
+<text class='part_ref_text' text-anchor='start' x='0.0' y='-60.0' transform='rotate(0 0.0 -60.0) translate(0.0 7.5)' style='font-size:15.0px' s:attribute="ref" > X </text>
+<text class='part_name_text' text-anchor='start' x='0.0' y='60.0' transform='rotate(0 0.0 60.0) translate(0.0 7.5)' style='font-size:15.0px' s:attribute="value" > X </text>
+<g s:x="93.0" s:y="0.0" s:pid="1" s:position="right"/>
+<g s:x="-93.0" s:y="30.0" s:pid="2" s:position="left"/>
+<g s:x="-93.0" s:y="-30.0" s:pid="3" s:position="left"/>
+</g>
+<g s:type="LM2902_2_" s:width="186.0" s:height="120.0" transform="translate(93.0,60.0)" >
+<s:alias val="LM2902_2_"/>
+<path d="M -60.0 -60.0 L 60.0 0.0 L -60.0 60.0 L -60.0 -60.0" style="stroke-width:3.0" class="$cell_id symbol background_fill" />
+<path d="M -93.0 -30.0 L -60.0 -30.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-60.0' y='-30.0' transform='rotate(0 -60.0 -30.0) translate(-1.5 -2.25)' style='font-size:15.0px'  > 5 </text>
+<text class='pin_name_text' text-anchor='start' x='-60.0' y='-30.0' transform='rotate(0 -60.0 -30.0) translate(1.5 3.0)' style='font-size:15.0px'  > + </text>
+<path d="M -93.0 30.0 L -60.0 30.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-60.0' y='30.0' transform='rotate(0 -60.0 30.0) translate(-1.5 -2.25)' style='font-size:15.0px'  > 6 </text>
+<text class='pin_name_text' text-anchor='start' x='-60.0' y='30.0' transform='rotate(0 -60.0 30.0) translate(1.5 3.0)' style='font-size:15.0px'  > - </text>
+<path d="M 93.0 0.0 L 60.0 0.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='60.0' y='0.0' transform='rotate(0 60.0 0.0) translate(1.5 -2.25)' style='font-size:15.0px'  > 7 </text>
+<text class='part_ref_text' text-anchor='start' x='0.0' y='-60.0' transform='rotate(0 0.0 -60.0) translate(0.0 7.5)' style='font-size:15.0px' s:attribute="ref" > X </text>
+<text class='part_name_text' text-anchor='start' x='0.0' y='60.0' transform='rotate(0 0.0 60.0) translate(0.0 7.5)' style='font-size:15.0px' s:attribute="value" > X </text>
+<g s:x="-93.0" s:y="-30.0" s:pid="5" s:position="left"/>
+<g s:x="-93.0" s:y="30.0" s:pid="6" s:position="left"/>
+<g s:x="93.0" s:y="0.0" s:pid="7" s:position="right"/>
+</g>
+<g s:type="LM2902_3_" s:width="186.0" s:height="120.0" transform="translate(93.0,60.0)" >
+<s:alias val="LM2902_3_"/>
+<path d="M -60.0 -60.0 L 60.0 0.0 L -60.0 60.0 L -60.0 -60.0" style="stroke-width:3.0" class="$cell_id symbol background_fill" />
+<path d="M -93.0 -30.0 L -60.0 -30.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-60.0' y='-30.0' transform='rotate(0 -60.0 -30.0) translate(-1.5 -2.25)' style='font-size:15.0px'  > 10 </text>
+<text class='pin_name_text' text-anchor='start' x='-60.0' y='-30.0' transform='rotate(0 -60.0 -30.0) translate(1.5 3.0)' style='font-size:15.0px'  > + </text>
+<path d="M 93.0 0.0 L 60.0 0.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='60.0' y='0.0' transform='rotate(0 60.0 0.0) translate(1.5 -2.25)' style='font-size:15.0px'  > 8 </text>
+<path d="M -93.0 30.0 L -60.0 30.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-60.0' y='30.0' transform='rotate(0 -60.0 30.0) translate(-1.5 -2.25)' style='font-size:15.0px'  > 9 </text>
+<text class='pin_name_text' text-anchor='start' x='-60.0' y='30.0' transform='rotate(0 -60.0 30.0) translate(1.5 3.0)' style='font-size:15.0px'  > - </text>
+<text class='part_ref_text' text-anchor='start' x='0.0' y='-60.0' transform='rotate(0 0.0 -60.0) translate(0.0 7.5)' style='font-size:15.0px' s:attribute="ref" > X </text>
+<text class='part_name_text' text-anchor='start' x='0.0' y='60.0' transform='rotate(0 0.0 60.0) translate(0.0 7.5)' style='font-size:15.0px' s:attribute="value" > X </text>
+<g s:x="-93.0" s:y="-30.0" s:pid="10" s:position="left"/>
+<g s:x="93.0" s:y="0.0" s:pid="8" s:position="right"/>
+<g s:x="-93.0" s:y="30.0" s:pid="9" s:position="left"/>
+</g>
+<g s:type="LM2902_4_" s:width="186.0" s:height="120.0" transform="translate(93.0,60.0)" >
+<s:alias val="LM2902_4_"/>
+<path d="M -60.0 -60.0 L 60.0 0.0 L -60.0 60.0 L -60.0 -60.0" style="stroke-width:3.0" class="$cell_id symbol background_fill" />
+<path d="M -93.0 -30.0 L -60.0 -30.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-60.0' y='-30.0' transform='rotate(0 -60.0 -30.0) translate(-1.5 -2.25)' style='font-size:15.0px'  > 12 </text>
+<text class='pin_name_text' text-anchor='start' x='-60.0' y='-30.0' transform='rotate(0 -60.0 -30.0) translate(1.5 3.0)' style='font-size:15.0px'  > + </text>
+<path d="M -93.0 30.0 L -60.0 30.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-60.0' y='30.0' transform='rotate(0 -60.0 30.0) translate(-1.5 -2.25)' style='font-size:15.0px'  > 13 </text>
+<text class='pin_name_text' text-anchor='start' x='-60.0' y='30.0' transform='rotate(0 -60.0 30.0) translate(1.5 3.0)' style='font-size:15.0px'  > - </text>
+<path d="M 93.0 0.0 L 60.0 0.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='60.0' y='0.0' transform='rotate(0 60.0 0.0) translate(1.5 -2.25)' style='font-size:15.0px'  > 14 </text>
+<text class='part_ref_text' text-anchor='start' x='0.0' y='-60.0' transform='rotate(0 0.0 -60.0) translate(0.0 7.5)' style='font-size:15.0px' s:attribute="ref" > X </text>
+<text class='part_name_text' text-anchor='start' x='0.0' y='60.0' transform='rotate(0 0.0 60.0) translate(0.0 7.5)' style='font-size:15.0px' s:attribute="value" > X </text>
+<g s:x="-93.0" s:y="-30.0" s:pid="12" s:position="left"/>
+<g s:x="-93.0" s:y="30.0" s:pid="13" s:position="left"/>
+<g s:x="93.0" s:y="0.0" s:pid="14" s:position="right"/>
+</g>
+<g s:type="LM2902_5_" s:width="0.0" s:height="186.0" transform="translate(30.0,93.0)" >
+<s:alias val="LM2902_5_"/>
+<path d="M -30.0 93.0 L -30.0 45.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-30.0' y='45.0' transform='rotate(-90 -30.0 45.0) translate(-1.5 -2.25)' style='font-size:15.0px'  > 11 </text>
+<text class='pin_name_text' text-anchor='start' x='-30.0' y='45.0' transform='rotate(-90 -30.0 45.0) translate(1.5 3.0)' style='font-size:15.0px'  > V- </text>
+<path d="M -30.0 -93.0 L -30.0 -45.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='-30.0' y='-45.0' transform='rotate(-90 -30.0 -45.0) translate(1.5 -2.25)' style='font-size:15.0px'  > 4 </text>
+<text class='pin_name_text' text-anchor='end' x='-30.0' y='-45.0' transform='rotate(-90 -30.0 -45.0) translate(-1.5 3.0)' style='font-size:15.0px'  > V+ </text>
+<text class='part_ref_text' text-anchor='start' x='0.0' y='-60.0' transform='rotate(0 0.0 -60.0) translate(0.0 7.5)' style='font-size:15.0px' s:attribute="ref" > X </text>
+<text class='part_name_text' text-anchor='start' x='0.0' y='60.0' transform='rotate(0 0.0 60.0) translate(0.0 7.5)' style='font-size:15.0px' s:attribute="value" > X </text>
+<g s:x="-30.0" s:y="93.0" s:pid="11" s:position="bottom"/>
+<g s:x="-30.0" s:y="-93.0" s:pid="4" s:position="top"/>
+</g>
+<g s:type="2N3904_1_" s:width="120.3" s:height="144.0" transform="translate(72.0,72.0)" >
+<s:alias val="2N3904_1_"/>
+<path d="M 15.0 21.0 L 21.0 15.0 L 27.0 27.0 L 15.0 21.0 L 15.0 21.0" style="stroke-width:1.0" class="$cell_id symbol pen_fill" />
+<circle cx="15.0" cy="0.0" r="33.3" style="stroke-width:3.0" class="$cell_id symbol " />
+<path d="M 7.5 -7.5 L 30.0 -30.0" style="stroke-width:1.0" class="$cell_id symbol " />
+<path d="M 7.5 7.5 L 30.0 30.0 L 30.0 30.0" style="stroke-width:1.0" class="$cell_id symbol " />
+<path d="M 7.5 -22.5 L 7.5 22.5 L 7.5 22.5" style="stroke-width:6.0" class="$cell_id symbol " />
+<path d="M 30.0 72.0 L 30.0 30.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='30.0' y='30.0' transform='rotate(-90 30.0 30.0) translate(-6.0 -2.25)' style='font-size:15.0px'  > 1 </text>
+<path d="M -72.0 0.0 L 7.5 0.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='7.5' y='0.0' transform='rotate(0 7.5 0.0) translate(-6.0 -2.25)' style='font-size:15.0px'  > 2 </text>
+<path d="M 30.0 -72.0 L 30.0 -30.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='30.0' y='-30.0' transform='rotate(-90 30.0 -30.0) translate(6.0 -2.25)' style='font-size:15.0px'  > 3 </text>
+<text class='part_ref_text' text-anchor='start' x='60.0' y='-22.5' transform='rotate(0 60.0 -22.5) translate(0.0 7.5)' style='font-size:15.0px' s:attribute="ref" > X </text>
+<text class='part_name_text' text-anchor='start' x='60.0' y='0.0' transform='rotate(0 60.0 0.0) translate(0.0 7.5)' style='font-size:15.0px' s:attribute="value" > X </text>
+<g s:x="30.0" s:y="72.0" s:pid="1" s:position="bottom"/>
+<g s:x="-72.0" s:y="0.0" s:pid="2" s:position="left"/>
+<g s:x="30.0" s:y="-72.0" s:pid="3" s:position="top"/>
+</g>
+<g s:type="Conn_01x04_1_" s:width="99.0" s:height="120.0" transform="translate(84.0,45.0)" >
+<s:alias val="Conn_01x04_1_"/>
+<rect x="-15.0" y="-45.0" width="30.0" height="120.0" style="stroke-width:3.0" class="$cell_id symbol background_fill" />
+<rect x="-15.0" y="58.5" width="15.0" height="3.0" style="stroke-width:1.7999999999999998" class="$cell_id symbol " />
+<rect x="-15.0" y="28.5" width="15.0" height="3.0" style="stroke-width:1.7999999999999998" class="$cell_id symbol " />
+<rect x="-15.0" y="-31.5" width="15.0" height="3.0" style="stroke-width:1.7999999999999998" class="$cell_id symbol " />
+<rect x="-15.0" y="-1.5" width="15.0" height="3.0" style="stroke-width:1.7999999999999998" class="$cell_id symbol " />
+<path d="M -84.0 -30.0 L -15.0 -30.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-15.0' y='-30.0' transform='rotate(0 -15.0 -30.0) translate(-12.0 -2.25)' style='font-size:15.0px'  > 1 </text>
+<path d="M -84.0 0.0 L -15.0 0.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-15.0' y='0.0' transform='rotate(0 -15.0 0.0) translate(-12.0 -2.25)' style='font-size:15.0px'  > 2 </text>
+<path d="M -84.0 30.0 L -15.0 30.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-15.0' y='30.0' transform='rotate(0 -15.0 30.0) translate(-12.0 -2.25)' style='font-size:15.0px'  > 3 </text>
+<path d="M -84.0 60.0 L -15.0 60.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-15.0' y='60.0' transform='rotate(0 -15.0 60.0) translate(-12.0 -2.25)' style='font-size:15.0px'  > 4 </text>
+<text class='part_ref_text' text-anchor='middle' x='0.0' y='-60.0' transform='rotate(0 0.0 -60.0) translate(0.0 7.5)' style='font-size:15.0px' s:attribute="ref" > X </text>
+<text class='part_name_text' text-anchor='middle' x='0.0' y='90.0' transform='rotate(0 0.0 90.0) translate(0.0 7.5)' style='font-size:15.0px' s:attribute="value" > X </text>
+<g s:x="-84.0" s:y="-30.0" s:pid="1" s:position="left"/>
+<g s:x="-84.0" s:y="0.0" s:pid="2" s:position="left"/>
+<g s:x="-84.0" s:y="30.0" s:pid="3" s:position="left"/>
+<g s:x="-84.0" s:y="60.0" s:pid="4" s:position="left"/>
+</g>
+<g s:type="AD8236_1_" s:width="246.0" s:height="186.0" transform="translate(123.0,93.0)" >
+<s:alias val="AD8236_1_"/>
+<path d="M -90.0 -90.0 L -90.0 90.0 L 90.0 0.0 L -90.0 -90.0" style="stroke-width:3.0" class="$cell_id symbol background_fill" />
+<path d="M -123.0 -60.0 L -90.0 -60.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-90.0' y='-60.0' transform='rotate(0 -90.0 -60.0) translate(-1.5 -2.25)' style='font-size:15.0px'  > 1 </text>
+<text class='pin_name_text' text-anchor='start' x='-90.0' y='-60.0' transform='rotate(0 -90.0 -60.0) translate(1.5 3.0)' style='font-size:15.0px'  > - </text>
+<path d="M -123.0 -30.0 L -90.0 -30.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-90.0' y='-30.0' transform='rotate(0 -90.0 -30.0) translate(-1.5 -2.25)' style='font-size:15.0px'  > 2 </text>
+<text class='pin_name_text' text-anchor='start' x='-90.0' y='-30.0' transform='rotate(0 -90.0 -30.0) translate(1.5 3.0)' style='font-size:15.0px'  > Rg </text>
+<path d="M -123.0 30.0 L -90.0 30.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-90.0' y='30.0' transform='rotate(0 -90.0 30.0) translate(-1.5 -2.25)' style='font-size:15.0px'  > 3 </text>
+<text class='pin_name_text' text-anchor='start' x='-90.0' y='30.0' transform='rotate(0 -90.0 30.0) translate(1.5 3.0)' style='font-size:15.0px'  > Rg </text>
+<path d="M -123.0 60.0 L -90.0 60.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-90.0' y='60.0' transform='rotate(0 -90.0 60.0) translate(-1.5 -2.25)' style='font-size:15.0px'  > 4 </text>
+<text class='pin_name_text' text-anchor='start' x='-90.0' y='60.0' transform='rotate(0 -90.0 60.0) translate(1.5 3.0)' style='font-size:15.0px'  > + </text>
+<path d="M -30.0 93.0 L -30.0 60.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-30.0' y='60.0' transform='rotate(-90 -30.0 60.0) translate(-1.5 -2.25)' style='font-size:15.0px'  > 5 </text>
+<text class='pin_name_text' text-anchor='start' x='-30.0' y='60.0' transform='rotate(-90 -30.0 60.0) translate(1.5 3.0)' style='font-size:15.0px'  > Vs- </text>
+<path d="M 30.0 93.0 L 30.0 30.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='30.0' y='30.0' transform='rotate(-90 30.0 30.0) translate(-1.5 -2.25)' style='font-size:15.0px'  > 6 </text>
+<text class='pin_name_text' text-anchor='start' x='30.0' y='30.0' transform='rotate(-90 30.0 30.0) translate(1.5 3.0)' style='font-size:15.0px'  > Ref </text>
+<path d="M 123.0 0.0 L 90.0 0.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='90.0' y='0.0' transform='rotate(0 90.0 0.0) translate(1.5 -2.25)' style='font-size:15.0px'  > 7 </text>
+<path d="M -30.0 -93.0 L -30.0 -60.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='-30.0' y='-60.0' transform='rotate(-90 -30.0 -60.0) translate(1.5 -2.25)' style='font-size:15.0px'  > 8 </text>
+<text class='pin_name_text' text-anchor='end' x='-30.0' y='-60.0' transform='rotate(-90 -30.0 -60.0) translate(-1.5 3.0)' style='font-size:15.0px'  > Vs+ </text>
+<text class='part_ref_text' text-anchor='middle' x='45.0' y='-90.0' transform='rotate(0 45.0 -90.0) translate(0.0 7.5)' style='font-size:15.0px' s:attribute="ref" > X </text>
+<text class='part_name_text' text-anchor='middle' x='45.0' y='-60.0' transform='rotate(0 45.0 -60.0) translate(0.0 7.5)' style='font-size:15.0px' s:attribute="value" > X </text>
+<g s:x="-123.0" s:y="-60.0" s:pid="1" s:position="left"/>
+<g s:x="-123.0" s:y="-30.0" s:pid="2" s:position="left"/>
+<g s:x="-123.0" s:y="30.0" s:pid="3" s:position="left"/>
+<g s:x="-123.0" s:y="60.0" s:pid="4" s:position="left"/>
+<g s:x="-30.0" s:y="93.0" s:pid="5" s:position="bottom"/>
+<g s:x="30.0" s:y="93.0" s:pid="6" s:position="bottom"/>
+<g s:x="123.0" s:y="0.0" s:pid="7" s:position="right"/>
+<g s:x="-30.0" s:y="-93.0" s:pid="8" s:position="top"/>
+</g>
+<g s:type="C_1_" s:width="48.0" s:height="102.0" transform="translate(24.0,51.0)" >
+<s:alias val="C_1_"/>
+<path d="M -24.0 9.0 L 24.0 9.0" style="stroke-width:6.0" class="$cell_id symbol " />
+<path d="M -24.0 -9.0 L 24.0 -9.0" style="stroke-width:6.0" class="$cell_id symbol " />
+<path d="M 0.0 -51.0 L 0.0 -12.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<path d="M 0.0 51.0 L 0.0 12.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='part_ref_text' text-anchor='start' x='7.5' y='-30.0' transform='rotate(0 7.5 -30.0) translate(0.0 7.5)' style='font-size:15.0px' s:attribute="ref" > X </text>
+<text class='part_name_text' text-anchor='start' x='7.5' y='30.0' transform='rotate(0 7.5 30.0) translate(0.0 7.5)' style='font-size:15.0px' s:attribute="value" > X </text>
+<g s:x="0.0" s:y="-51.0" s:pid="1" s:position="top"/>
+<g s:x="0.0" s:y="51.0" s:pid="2" s:position="bottom"/>
+</g>
+<g s:type="LM2903_1_" s:width="186.0" s:height="120.0" transform="translate(93.0,60.0)" >
+<s:alias val="LM2903_1_"/>
+<path d="M -60.0 -60.0 L 60.0 0.0 L -60.0 60.0 L -60.0 -60.0" style="stroke-width:3.0" class="$cell_id symbol background_fill" />
+<path d="M 93.0 0.0 L 60.0 0.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='60.0' y='0.0' transform='rotate(0 60.0 0.0) translate(1.5 -2.25)' style='font-size:15.0px'  > 1 </text>
+<path d="M -93.0 30.0 L -60.0 30.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-60.0' y='30.0' transform='rotate(0 -60.0 30.0) translate(-1.5 -2.25)' style='font-size:15.0px'  > 2 </text>
+<text class='pin_name_text' text-anchor='start' x='-60.0' y='30.0' transform='rotate(0 -60.0 30.0) translate(1.5 3.0)' style='font-size:15.0px'  > - </text>
+<path d="M -93.0 -30.0 L -60.0 -30.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-60.0' y='-30.0' transform='rotate(0 -60.0 -30.0) translate(-1.5 -2.25)' style='font-size:15.0px'  > 3 </text>
+<text class='pin_name_text' text-anchor='start' x='-60.0' y='-30.0' transform='rotate(0 -60.0 -30.0) translate(1.5 3.0)' style='font-size:15.0px'  > + </text>
+<text class='part_ref_text' text-anchor='middle' x='45.0' y='-45.0' transform='rotate(0 45.0 -45.0) translate(0.0 7.5)' style='font-size:15.0px' s:attribute="ref" > X </text>
+<text class='part_name_text' text-anchor='middle' x='75.0' y='45.0' transform='rotate(0 75.0 45.0) translate(0.0 7.5)' style='font-size:15.0px' s:attribute="value" > X </text>
+<g s:x="93.0" s:y="0.0" s:pid="1" s:position="right"/>
+<g s:x="-93.0" s:y="30.0" s:pid="2" s:position="left"/>
+<g s:x="-93.0" s:y="-30.0" s:pid="3" s:position="left"/>
+</g>
+<g s:type="LM2903_2_" s:width="186.0" s:height="120.0" transform="translate(93.0,60.0)" >
+<s:alias val="LM2903_2_"/>
+<path d="M -60.0 -60.0 L 60.0 0.0 L -60.0 60.0 L -60.0 -60.0" style="stroke-width:3.0" class="$cell_id symbol background_fill" />
+<path d="M -93.0 -30.0 L -60.0 -30.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-60.0' y='-30.0' transform='rotate(0 -60.0 -30.0) translate(-1.5 -2.25)' style='font-size:15.0px'  > 5 </text>
+<text class='pin_name_text' text-anchor='start' x='-60.0' y='-30.0' transform='rotate(0 -60.0 -30.0) translate(1.5 3.0)' style='font-size:15.0px'  > + </text>
+<path d="M -93.0 30.0 L -60.0 30.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-60.0' y='30.0' transform='rotate(0 -60.0 30.0) translate(-1.5 -2.25)' style='font-size:15.0px'  > 6 </text>
+<text class='pin_name_text' text-anchor='start' x='-60.0' y='30.0' transform='rotate(0 -60.0 30.0) translate(1.5 3.0)' style='font-size:15.0px'  > _ </text>
+<path d="M 93.0 0.0 L 60.0 0.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='60.0' y='0.0' transform='rotate(0 60.0 0.0) translate(1.5 -2.25)' style='font-size:15.0px'  > 7 </text>
+<text class='part_ref_text' text-anchor='middle' x='45.0' y='-45.0' transform='rotate(0 45.0 -45.0) translate(0.0 7.5)' style='font-size:15.0px' s:attribute="ref" > X </text>
+<text class='part_name_text' text-anchor='middle' x='75.0' y='45.0' transform='rotate(0 75.0 45.0) translate(0.0 7.5)' style='font-size:15.0px' s:attribute="value" > X </text>
+<g s:x="-93.0" s:y="-30.0" s:pid="5" s:position="left"/>
+<g s:x="-93.0" s:y="30.0" s:pid="6" s:position="left"/>
+<g s:x="93.0" s:y="0.0" s:pid="7" s:position="right"/>
+</g>
+<g s:type="LM2903_3_" s:width="0.0" s:height="186.0" transform="translate(30.0,93.0)" >
+<s:alias val="LM2903_3_"/>
+<path d="M -30.0 93.0 L -30.0 45.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-30.0' y='45.0' transform='rotate(-90 -30.0 45.0) translate(-1.5 -2.25)' style='font-size:15.0px'  > 4 </text>
+<text class='pin_name_text' text-anchor='start' x='-30.0' y='45.0' transform='rotate(-90 -30.0 45.0) translate(1.5 3.0)' style='font-size:15.0px'  > V- </text>
+<path d="M -30.0 -93.0 L -30.0 -45.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='-30.0' y='-45.0' transform='rotate(-90 -30.0 -45.0) translate(1.5 -2.25)' style='font-size:15.0px'  > 8 </text>
+<text class='pin_name_text' text-anchor='end' x='-30.0' y='-45.0' transform='rotate(-90 -30.0 -45.0) translate(-1.5 3.0)' style='font-size:15.0px'  > V+ </text>
+<text class='part_ref_text' text-anchor='middle' x='45.0' y='-45.0' transform='rotate(0 45.0 -45.0) translate(0.0 7.5)' style='font-size:15.0px' s:attribute="ref" > X </text>
+<text class='part_name_text' text-anchor='middle' x='75.0' y='45.0' transform='rotate(0 75.0 45.0) translate(0.0 7.5)' style='font-size:15.0px' s:attribute="value" > X </text>
+<g s:x="-30.0" s:y="93.0" s:pid="4" s:position="bottom"/>
+<g s:x="-30.0" s:y="-93.0" s:pid="8" s:position="top"/>
+</g>
+<g s:type="ESP32-S3-WROOM-2-N16R8V_1_" s:width="408.0" s:height="780.0" transform="translate(204.0,390.0)" >
+<s:alias val="ESP32-S3-WROOM-2-N16R8V_1_"/>
+<rect x="-120.0" y="-390.0" width="240.0" height="780.0" style="stroke-width:3.0" class="$cell_id symbol background_fill" />
+<path d="M 204.0 360.0 L 120.0 360.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='120.0' y='360.0' transform='rotate(0 120.0 360.0) translate(12.0 -1.7999999999999998)' style='font-size:12.0px'  > 1 </text>
+<text class='pin_name_text' text-anchor='end' x='120.0' y='360.0' transform='rotate(0 120.0 360.0) translate(-12.0 2.4)' style='font-size:12.0px'  > GND </text>
+<path d="M 204.0 360.0 L 120.0 360.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='120.0' y='360.0' transform='rotate(0 120.0 360.0) translate(12.0 -1.7999999999999998)' style='font-size:12.0px'  > 40 </text>
+<text class='pin_name_text' text-anchor='end' x='120.0' y='360.0' transform='rotate(0 120.0 360.0) translate(-12.0 2.4)' style='font-size:12.0px'  > GND </text>
+<path d="M 204.0 360.0 L 120.0 360.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='120.0' y='360.0' transform='rotate(0 120.0 360.0) translate(12.0 -1.7999999999999998)' style='font-size:12.0px'  > 41_1 </text>
+<text class='pin_name_text' text-anchor='end' x='120.0' y='360.0' transform='rotate(0 120.0 360.0) translate(-12.0 2.4)' style='font-size:12.0px'  > GND </text>
+<path d="M 204.0 360.0 L 120.0 360.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='120.0' y='360.0' transform='rotate(0 120.0 360.0) translate(12.0 -1.7999999999999998)' style='font-size:12.0px'  > 41_2 </text>
+<text class='pin_name_text' text-anchor='end' x='120.0' y='360.0' transform='rotate(0 120.0 360.0) translate(-12.0 2.4)' style='font-size:12.0px'  > GND </text>
+<path d="M 204.0 360.0 L 120.0 360.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='120.0' y='360.0' transform='rotate(0 120.0 360.0) translate(12.0 -1.7999999999999998)' style='font-size:12.0px'  > 41_3 </text>
+<text class='pin_name_text' text-anchor='end' x='120.0' y='360.0' transform='rotate(0 120.0 360.0) translate(-12.0 2.4)' style='font-size:12.0px'  > GND </text>
+<path d="M 204.0 360.0 L 120.0 360.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='120.0' y='360.0' transform='rotate(0 120.0 360.0) translate(12.0 -1.7999999999999998)' style='font-size:12.0px'  > 41_4 </text>
+<text class='pin_name_text' text-anchor='end' x='120.0' y='360.0' transform='rotate(0 120.0 360.0) translate(-12.0 2.4)' style='font-size:12.0px'  > GND </text>
+<path d="M 204.0 360.0 L 120.0 360.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='120.0' y='360.0' transform='rotate(0 120.0 360.0) translate(12.0 -1.7999999999999998)' style='font-size:12.0px'  > 41_5 </text>
+<text class='pin_name_text' text-anchor='end' x='120.0' y='360.0' transform='rotate(0 120.0 360.0) translate(-12.0 2.4)' style='font-size:12.0px'  > GND </text>
+<path d="M 204.0 360.0 L 120.0 360.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='120.0' y='360.0' transform='rotate(0 120.0 360.0) translate(12.0 -1.7999999999999998)' style='font-size:12.0px'  > 41_6 </text>
+<text class='pin_name_text' text-anchor='end' x='120.0' y='360.0' transform='rotate(0 120.0 360.0) translate(-12.0 2.4)' style='font-size:12.0px'  > GND </text>
+<path d="M 204.0 360.0 L 120.0 360.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='120.0' y='360.0' transform='rotate(0 120.0 360.0) translate(12.0 -1.7999999999999998)' style='font-size:12.0px'  > 41_7 </text>
+<text class='pin_name_text' text-anchor='end' x='120.0' y='360.0' transform='rotate(0 120.0 360.0) translate(-12.0 2.4)' style='font-size:12.0px'  > GND </text>
+<path d="M 204.0 360.0 L 120.0 360.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='120.0' y='360.0' transform='rotate(0 120.0 360.0) translate(12.0 -1.7999999999999998)' style='font-size:12.0px'  > 41_8 </text>
+<text class='pin_name_text' text-anchor='end' x='120.0' y='360.0' transform='rotate(0 120.0 360.0) translate(-12.0 2.4)' style='font-size:12.0px'  > GND </text>
+<path d="M 204.0 360.0 L 120.0 360.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='120.0' y='360.0' transform='rotate(0 120.0 360.0) translate(12.0 -1.7999999999999998)' style='font-size:12.0px'  > 41_9 </text>
+<text class='pin_name_text' text-anchor='end' x='120.0' y='360.0' transform='rotate(0 120.0 360.0) translate(-12.0 2.4)' style='font-size:12.0px'  > GND </text>
+<path d="M 204.0 -360.0 L 120.0 -360.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='120.0' y='-360.0' transform='rotate(0 120.0 -360.0) translate(12.0 -1.7999999999999998)' style='font-size:12.0px'  > 2 </text>
+<text class='pin_name_text' text-anchor='end' x='120.0' y='-360.0' transform='rotate(0 120.0 -360.0) translate(-12.0 2.4)' style='font-size:12.0px'  > 3V3 </text>
+<path d="M -204.0 -330.0 L -120.0 -330.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-120.0' y='-330.0' transform='rotate(0 -120.0 -330.0) translate(-12.0 -1.7999999999999998)' style='font-size:12.0px'  > 3 </text>
+<text class='pin_name_text' text-anchor='start' x='-120.0' y='-330.0' transform='rotate(0 -120.0 -330.0) translate(12.0 2.4)' style='font-size:12.0px'  > EN </text>
+<path d="M 180.0 90.0 L 120.0 90.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='120.0' y='90.0' transform='rotate(0 120.0 90.0) translate(12.0 -1.7999999999999998)' style='font-size:12.0px'  > 34 </text>
+<text class='pin_name_text' text-anchor='end' x='120.0' y='90.0' transform='rotate(0 120.0 90.0) translate(-12.0 2.4)' style='font-size:12.0px'  > IO41 </text>
+<path d="M 180.0 30.0 L 120.0 30.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='120.0' y='30.0' transform='rotate(0 120.0 30.0) translate(12.0 -1.7999999999999998)' style='font-size:12.0px'  > 32 </text>
+<text class='pin_name_text' text-anchor='end' x='120.0' y='30.0' transform='rotate(0 120.0 30.0) translate(-12.0 2.4)' style='font-size:12.0px'  > IO39 </text>
+<path d="M 180.0 60.0 L 120.0 60.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='120.0' y='60.0' transform='rotate(0 120.0 60.0) translate(12.0 -1.7999999999999998)' style='font-size:12.0px'  > 33 </text>
+<text class='pin_name_text' text-anchor='end' x='120.0' y='60.0' transform='rotate(0 120.0 60.0) translate(-12.0 2.4)' style='font-size:12.0px'  > IO40 </text>
+<path d="M -180.0 240.0 L -120.0 240.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-120.0' y='240.0' transform='rotate(0 -120.0 240.0) translate(-12.0 -1.7999999999999998)' style='font-size:12.0px'  > 22 </text>
+<text class='pin_name_text' text-anchor='start' x='-120.0' y='240.0' transform='rotate(0 -120.0 240.0) translate(12.0 2.4)' style='font-size:12.0px'  > IO14 </text>
+<path d="M -180.0 180.0 L -120.0 180.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-120.0' y='180.0' transform='rotate(0 -120.0 180.0) translate(-12.0 -1.7999999999999998)' style='font-size:12.0px'  > 20 </text>
+<text class='pin_name_text' text-anchor='start' x='-120.0' y='180.0' transform='rotate(0 -120.0 180.0) translate(12.0 2.4)' style='font-size:12.0px'  > IO12 </text>
+<path d="M -180.0 210.0 L -120.0 210.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-120.0' y='210.0' transform='rotate(0 -120.0 210.0) translate(-12.0 -1.7999999999999998)' style='font-size:12.0px'  > 21 </text>
+<text class='pin_name_text' text-anchor='start' x='-120.0' y='210.0' transform='rotate(0 -120.0 210.0) translate(12.0 2.4)' style='font-size:12.0px'  > IO13 </text>
+<path d="M -180.0 270.0 L -120.0 270.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-120.0' y='270.0' transform='rotate(0 -120.0 270.0) translate(-12.0 -1.7999999999999998)' style='font-size:12.0px'  > 8 </text>
+<text class='pin_name_text' text-anchor='start' x='-120.0' y='270.0' transform='rotate(0 -120.0 270.0) translate(12.0 2.4)' style='font-size:12.0px'  > IO15 </text>
+<path d="M -180.0 -120.0 L -120.0 -120.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-120.0' y='-120.0' transform='rotate(0 -120.0 -120.0) translate(-12.0 -1.7999999999999998)' style='font-size:12.0px'  > 38 </text>
+<text class='pin_name_text' text-anchor='start' x='-120.0' y='-120.0' transform='rotate(0 -120.0 -120.0) translate(12.0 2.4)' style='font-size:12.0px'  > IO2 </text>
+<path d="M -180.0 -180.0 L -120.0 -180.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-120.0' y='-180.0' transform='rotate(0 -120.0 -180.0) translate(-12.0 -1.7999999999999998)' style='font-size:12.0px'  > 27 </text>
+<text class='pin_name_text' text-anchor='start' x='-120.0' y='-180.0' transform='rotate(0 -120.0 -180.0) translate(12.0 2.4)' style='font-size:12.0px'  > IO0 </text>
+<path d="M -180.0 -60.0 L -120.0 -60.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-120.0' y='-60.0' transform='rotate(0 -120.0 -60.0) translate(-12.0 -1.7999999999999998)' style='font-size:12.0px'  > 4 </text>
+<text class='pin_name_text' text-anchor='start' x='-120.0' y='-60.0' transform='rotate(0 -120.0 -60.0) translate(12.0 2.4)' style='font-size:12.0px'  > IO4 </text>
+<path d="M 180.0 -180.0 L 120.0 -180.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='120.0' y='-180.0' transform='rotate(0 120.0 -180.0) translate(12.0 -1.7999999999999998)' style='font-size:12.0px'  > 9 </text>
+<text class='pin_name_text' text-anchor='end' x='120.0' y='-180.0' transform='rotate(0 120.0 -180.0) translate(-12.0 2.4)' style='font-size:12.0px'  > IO16 </text>
+<path d="M 180.0 -150.0 L 120.0 -150.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='120.0' y='-150.0' transform='rotate(0 120.0 -150.0) translate(12.0 -1.7999999999999998)' style='font-size:12.0px'  > 10 </text>
+<text class='pin_name_text' text-anchor='end' x='120.0' y='-150.0' transform='rotate(0 120.0 -150.0) translate(-12.0 2.4)' style='font-size:12.0px'  > IO17 </text>
+<path d="M -180.0 -30.0 L -120.0 -30.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-120.0' y='-30.0' transform='rotate(0 -120.0 -30.0) translate(-12.0 -1.7999999999999998)' style='font-size:12.0px'  > 5 </text>
+<text class='pin_name_text' text-anchor='start' x='-120.0' y='-30.0' transform='rotate(0 -120.0 -30.0) translate(12.0 2.4)' style='font-size:12.0px'  > IO5 </text>
+<path d="M 180.0 -120.0 L 120.0 -120.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='120.0' y='-120.0' transform='rotate(0 120.0 -120.0) translate(12.0 -1.7999999999999998)' style='font-size:12.0px'  > 11 </text>
+<text class='pin_name_text' text-anchor='end' x='120.0' y='-120.0' transform='rotate(0 120.0 -120.0) translate(-12.0 2.4)' style='font-size:12.0px'  > IO18 </text>
+<path d="M 180.0 -90.0 L 120.0 -90.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='120.0' y='-90.0' transform='rotate(0 120.0 -90.0) translate(12.0 -1.7999999999999998)' style='font-size:12.0px'  > 13 </text>
+<text class='pin_name_text' text-anchor='end' x='120.0' y='-90.0' transform='rotate(0 120.0 -90.0) translate(-12.0 2.4)' style='font-size:12.0px'  > IO19 </text>
+<path d="M 180.0 -30.0 L 120.0 -30.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='120.0' y='-30.0' transform='rotate(0 120.0 -30.0) translate(12.0 -1.7999999999999998)' style='font-size:12.0px'  > 23 </text>
+<text class='pin_name_text' text-anchor='end' x='120.0' y='-30.0' transform='rotate(0 120.0 -30.0) translate(-12.0 2.4)' style='font-size:12.0px'  > IO21 </text>
+<path d="M 180.0 0.0 L 120.0 0.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='120.0' y='0.0' transform='rotate(0 120.0 0.0) translate(12.0 -1.7999999999999998)' style='font-size:12.0px'  > 31 </text>
+<text class='pin_name_text' text-anchor='end' x='120.0' y='0.0' transform='rotate(0 120.0 0.0) translate(-12.0 2.4)' style='font-size:12.0px'  > IO38 </text>
+<path d="M -180.0 -150.0 L -120.0 -150.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-120.0' y='-150.0' transform='rotate(0 -120.0 -150.0) translate(-12.0 -1.7999999999999998)' style='font-size:12.0px'  > 39 </text>
+<text class='pin_name_text' text-anchor='start' x='-120.0' y='-150.0' transform='rotate(0 -120.0 -150.0) translate(12.0 2.4)' style='font-size:12.0px'  > IO1 </text>
+<path d="M -204.0 -90.0 L -120.0 -90.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-120.0' y='-90.0' transform='rotate(0 -120.0 -90.0) translate(-12.0 -1.7999999999999998)' style='font-size:12.0px'  > 15 </text>
+<text class='pin_name_text' text-anchor='start' x='-120.0' y='-90.0' transform='rotate(0 -120.0 -90.0) translate(12.0 2.4)' style='font-size:12.0px'  > IO3 </text>
+<path d="M -180.0 0.0 L -120.0 0.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-120.0' y='0.0' transform='rotate(0 -120.0 0.0) translate(-12.0 -1.7999999999999998)' style='font-size:12.0px'  > 6 </text>
+<text class='pin_name_text' text-anchor='start' x='-120.0' y='0.0' transform='rotate(0 -120.0 0.0) translate(12.0 2.4)' style='font-size:12.0px'  > IO6 </text>
+<path d="M -180.0 30.0 L -120.0 30.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-120.0' y='30.0' transform='rotate(0 -120.0 30.0) translate(-12.0 -1.7999999999999998)' style='font-size:12.0px'  > 7 </text>
+<text class='pin_name_text' text-anchor='start' x='-120.0' y='30.0' transform='rotate(0 -120.0 30.0) translate(12.0 2.4)' style='font-size:12.0px'  > IO7 </text>
+<path d="M -180.0 60.0 L -120.0 60.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-120.0' y='60.0' transform='rotate(0 -120.0 60.0) translate(-12.0 -1.7999999999999998)' style='font-size:12.0px'  > 12 </text>
+<text class='pin_name_text' text-anchor='start' x='-120.0' y='60.0' transform='rotate(0 -120.0 60.0) translate(12.0 2.4)' style='font-size:12.0px'  > IO8 </text>
+<path d="M -204.0 90.0 L -120.0 90.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-120.0' y='90.0' transform='rotate(0 -120.0 90.0) translate(-12.0 -1.7999999999999998)' style='font-size:12.0px'  > 17 </text>
+<text class='pin_name_text' text-anchor='start' x='-120.0' y='90.0' transform='rotate(0 -120.0 90.0) translate(12.0 2.4)' style='font-size:12.0px'  > IO9 </text>
+<path d="M -204.0 120.0 L -120.0 120.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-120.0' y='120.0' transform='rotate(0 -120.0 120.0) translate(-12.0 -1.7999999999999998)' style='font-size:12.0px'  > 18 </text>
+<text class='pin_name_text' text-anchor='start' x='-120.0' y='120.0' transform='rotate(0 -120.0 120.0) translate(12.0 2.4)' style='font-size:12.0px'  > IO10 </text>
+<path d="M -180.0 150.0 L -120.0 150.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-120.0' y='150.0' transform='rotate(0 -120.0 150.0) translate(-12.0 -1.7999999999999998)' style='font-size:12.0px'  > 19 </text>
+<text class='pin_name_text' text-anchor='start' x='-120.0' y='150.0' transform='rotate(0 -120.0 150.0) translate(12.0 2.4)' style='font-size:12.0px'  > IO11 </text>
+<path d="M 180.0 120.0 L 120.0 120.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='120.0' y='120.0' transform='rotate(0 120.0 120.0) translate(12.0 -1.7999999999999998)' style='font-size:12.0px'  > 35 </text>
+<text class='pin_name_text' text-anchor='end' x='120.0' y='120.0' transform='rotate(0 120.0 120.0) translate(-12.0 2.4)' style='font-size:12.0px'  > IO42 </text>
+<path d="M 180.0 -60.0 L 120.0 -60.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='120.0' y='-60.0' transform='rotate(0 120.0 -60.0) translate(12.0 -1.7999999999999998)' style='font-size:12.0px'  > 14 </text>
+<text class='pin_name_text' text-anchor='end' x='120.0' y='-60.0' transform='rotate(0 120.0 -60.0) translate(-12.0 2.4)' style='font-size:12.0px'  > IO20 </text>
+<path d="M -180.0 -240.0 L -120.0 -240.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-120.0' y='-240.0' transform='rotate(0 -120.0 -240.0) translate(-12.0 -1.7999999999999998)' style='font-size:12.0px'  > 37 </text>
+<text class='pin_name_text' text-anchor='start' x='-120.0' y='-240.0' transform='rotate(0 -120.0 -240.0) translate(12.0 2.4)' style='font-size:12.0px'  > TXD0 </text>
+<path d="M -180.0 -270.0 L -120.0 -270.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-120.0' y='-270.0' transform='rotate(0 -120.0 -270.0) translate(-12.0 -1.7999999999999998)' style='font-size:12.0px'  > 36 </text>
+<text class='pin_name_text' text-anchor='start' x='-120.0' y='-270.0' transform='rotate(0 -120.0 -270.0) translate(12.0 2.4)' style='font-size:12.0px'  > RXD0 </text>
+<path d="M 180.0 150.0 L 120.0 150.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='120.0' y='150.0' transform='rotate(0 120.0 150.0) translate(12.0 -1.7999999999999998)' style='font-size:12.0px'  > 26 </text>
+<text class='pin_name_text' text-anchor='end' x='120.0' y='150.0' transform='rotate(0 120.0 150.0) translate(-12.0 2.4)' style='font-size:12.0px'  > IO45 </text>
+<path d="M 204.0 180.0 L 120.0 180.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='120.0' y='180.0' transform='rotate(0 120.0 180.0) translate(12.0 -1.7999999999999998)' style='font-size:12.0px'  > 16 </text>
+<text class='pin_name_text' text-anchor='end' x='120.0' y='180.0' transform='rotate(0 120.0 180.0) translate(-12.0 2.4)' style='font-size:12.0px'  > IO46 </text>
+<path d="M 180.0 210.0 L 120.0 210.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='120.0' y='210.0' transform='rotate(0 120.0 210.0) translate(12.0 -1.7999999999999998)' style='font-size:12.0px'  > 24 </text>
+<text class='pin_name_text' text-anchor='end' x='120.0' y='210.0' transform='rotate(0 120.0 210.0) translate(-12.0 2.4)' style='font-size:12.0px'  > IO47 </text>
+<path d="M 180.0 240.0 L 120.0 240.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='start' x='120.0' y='240.0' transform='rotate(0 120.0 240.0) translate(12.0 -1.7999999999999998)' style='font-size:12.0px'  > 25 </text>
+<text class='pin_name_text' text-anchor='end' x='120.0' y='240.0' transform='rotate(0 120.0 240.0) translate(-12.0 2.4)' style='font-size:12.0px'  > IO48 </text>
+<path d="M -180.0 330.0 L -120.0 330.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-120.0' y='330.0' transform='rotate(0 -120.0 330.0) translate(-12.0 -1.7999999999999998)' style='font-size:12.0px'  > 28 </text>
+<text class='pin_name_text' text-anchor='start' x='-120.0' y='330.0' transform='rotate(0 -120.0 330.0) translate(12.0 2.4)' style='font-size:12.0px'  > NC </text>
+<path d="M -180.0 330.0 L -120.0 330.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-120.0' y='330.0' transform='rotate(0 -120.0 330.0) translate(-12.0 -1.7999999999999998)' style='font-size:12.0px'  > 29 </text>
+<text class='pin_name_text' text-anchor='start' x='-120.0' y='330.0' transform='rotate(0 -120.0 330.0) translate(12.0 2.4)' style='font-size:12.0px'  > NC </text>
+<path d="M -180.0 330.0 L -120.0 330.0" style="stroke-width:1.0" class="$cell_id symbol"/>
+<text class='pin_num_text' text-anchor='end' x='-120.0' y='330.0' transform='rotate(0 -120.0 330.0) translate(-12.0 -1.7999999999999998)' style='font-size:12.0px'  > 30 </text>
+<text class='pin_name_text' text-anchor='start' x='-120.0' y='330.0' transform='rotate(0 -120.0 330.0) translate(12.0 2.4)' style='font-size:12.0px'  > NC </text>
+<text class='part_ref_text' text-anchor='start' x='-120.0' y='-399.0' transform='rotate(0 -120.0 -399.0) translate(0.0 0.0)' style='font-size:15.0px' s:attribute="ref" > X </text>
+<text class='part_name_text' text-anchor='start' x='-120.0' y='420.0' transform='rotate(0 -120.0 420.0) translate(0.0 0.0)' style='font-size:15.0px' s:attribute="value" > X </text>
+<g s:x="204.0" s:y="360.0" s:pid="1" s:position="right"/>
+<g s:x="204.0" s:y="360.0" s:pid="40" s:position="right"/>
+<g s:x="204.0" s:y="360.0" s:pid="41_1" s:position="right"/>
+<g s:x="204.0" s:y="360.0" s:pid="41_2" s:position="right"/>
+<g s:x="204.0" s:y="360.0" s:pid="41_3" s:position="right"/>
+<g s:x="204.0" s:y="360.0" s:pid="41_4" s:position="right"/>
+<g s:x="204.0" s:y="360.0" s:pid="41_5" s:position="right"/>
+<g s:x="204.0" s:y="360.0" s:pid="41_6" s:position="right"/>
+<g s:x="204.0" s:y="360.0" s:pid="41_7" s:position="right"/>
+<g s:x="204.0" s:y="360.0" s:pid="41_8" s:position="right"/>
+<g s:x="204.0" s:y="360.0" s:pid="41_9" s:position="right"/>
+<g s:x="204.0" s:y="-360.0" s:pid="2" s:position="right"/>
+<g s:x="-204.0" s:y="-330.0" s:pid="3" s:position="left"/>
+<g s:x="180.0" s:y="90.0" s:pid="34" s:position="right"/>
+<g s:x="180.0" s:y="30.0" s:pid="32" s:position="right"/>
+<g s:x="180.0" s:y="60.0" s:pid="33" s:position="right"/>
+<g s:x="-180.0" s:y="240.0" s:pid="22" s:position="left"/>
+<g s:x="-180.0" s:y="180.0" s:pid="20" s:position="left"/>
+<g s:x="-180.0" s:y="210.0" s:pid="21" s:position="left"/>
+<g s:x="-180.0" s:y="270.0" s:pid="8" s:position="left"/>
+<g s:x="-180.0" s:y="-120.0" s:pid="38" s:position="left"/>
+<g s:x="-180.0" s:y="-180.0" s:pid="27" s:position="left"/>
+<g s:x="-180.0" s:y="-60.0" s:pid="4" s:position="left"/>
+<g s:x="180.0" s:y="-180.0" s:pid="9" s:position="right"/>
+<g s:x="180.0" s:y="-150.0" s:pid="10" s:position="right"/>
+<g s:x="-180.0" s:y="-30.0" s:pid="5" s:position="left"/>
+<g s:x="180.0" s:y="-120.0" s:pid="11" s:position="right"/>
+<g s:x="180.0" s:y="-90.0" s:pid="13" s:position="right"/>
+<g s:x="180.0" s:y="-30.0" s:pid="23" s:position="right"/>
+<g s:x="180.0" s:y="0.0" s:pid="31" s:position="right"/>
+<g s:x="-180.0" s:y="-150.0" s:pid="39" s:position="left"/>
+<g s:x="-204.0" s:y="-90.0" s:pid="15" s:position="left"/>
+<g s:x="-180.0" s:y="0.0" s:pid="6" s:position="left"/>
+<g s:x="-180.0" s:y="30.0" s:pid="7" s:position="left"/>
+<g s:x="-180.0" s:y="60.0" s:pid="12" s:position="left"/>
+<g s:x="-204.0" s:y="90.0" s:pid="17" s:position="left"/>
+<g s:x="-204.0" s:y="120.0" s:pid="18" s:position="left"/>
+<g s:x="-180.0" s:y="150.0" s:pid="19" s:position="left"/>
+<g s:x="180.0" s:y="120.0" s:pid="35" s:position="right"/>
+<g s:x="180.0" s:y="-60.0" s:pid="14" s:position="right"/>
+<g s:x="-180.0" s:y="-240.0" s:pid="37" s:position="left"/>
+<g s:x="-180.0" s:y="-270.0" s:pid="36" s:position="left"/>
+<g s:x="180.0" s:y="150.0" s:pid="26" s:position="right"/>
+<g s:x="204.0" s:y="180.0" s:pid="16" s:position="right"/>
+<g s:x="180.0" s:y="210.0" s:pid="24" s:position="right"/>
+<g s:x="180.0" s:y="240.0" s:pid="25" s:position="right"/>
+<g s:x="-180.0" s:y="330.0" s:pid="28" s:position="left"/>
+<g s:x="-180.0" s:y="330.0" s:pid="29" s:position="left"/>
+<g s:x="-180.0" s:y="330.0" s:pid="30" s:position="left"/>
+</g>
+</svg>

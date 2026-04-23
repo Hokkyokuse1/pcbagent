@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SKiDL Circuit Agent</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0d1117;
+      --surface:   #161b22;
+      --surface2:  #1c2330;
+      --border:    #30363d;
+      --accent:    #58a6ff;
+      --accent2:   #3fb950;
+      --amber:     #d29922;
+      --red:       #f85149;
+      --text:      #e6edf3;
+      --muted:     #7d8590;
+      --radius:    12px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ── Header ── */
+    header {
+      width: 100%;
+      padding: 20px 32px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--surface);
+    }
+    header .logo {
+      font-size: 22px;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), #a371f7);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.5px;
+    }
+    header .tagline {
+      color: var(--muted);
+      font-size: 13px;
+      margin-left: 4px;
+    }
+    header nav { margin-left: auto; display: flex; gap: 16px; }
+    header nav a { color: var(--muted); text-decoration: none; font-size: 14px; transition: color .2s; }
+    header nav a:hover { color: var(--text); }
+
+    /* ── Main ── */
+    main {
+      width: 100%;
+      max-width: 860px;
+      padding: 48px 24px;
+      flex: 1;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 700;
+      letter-spacing: -1px;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--accent) 0%, #a371f7 50%, #f78166 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p { color: var(--muted); font-size: 16px; line-height: 1.6; }
+
+    /* ── Form card ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+    .card label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      margin-bottom: 8px;
+    }
+
+    textarea#description {
+      width: 100%;
+      min-height: 130px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      padding: 14px;
+      resize: vertical;
+      transition: border-color .2s;
+      outline: none;
+    }
+    textarea#description:focus { border-color: var(--accent); }
+    textarea#description::placeholder { color: var(--muted); }
+
+    .examples {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px;
+    }
+    .example-chip {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: 12px;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .example-chip:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── Model controls ── */
+    .model-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 120px;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .model-row select, .model-row input[type=number] {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      padding: 10px 12px;
+      outline: none;
+      transition: border-color .2s;
+      appearance: none;
+    }
+    .model-row select:focus,
+    .model-row input[type=number]:focus { border-color: var(--accent); }
+
+    /* ── Submit button ── */
+    #generate-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 16px;
+      margin-top: 20px;
+      background: linear-gradient(135deg, var(--accent), #a371f7);
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity .2s, transform .15s;
+      letter-spacing: .2px;
+    }
+    #generate-btn:hover:not(:disabled) { opacity: .9; transform: translateY(-1px); }
+    #generate-btn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+    .btn-icon { font-size: 20px; }
+
+    /* ── Progress log ── */
+    #progress-section { display: none; }
+    #progress-section.visible { display: block; }
+
+    .log-box {
+      background: #010409;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12.5px;
+      color: #94d82d;
+      max-height: 300px;
+      overflow-y: auto;
+      line-height: 1.7;
+    }
+    .log-entry { margin: 0; white-space: pre-wrap; }
+    .log-entry.error { color: var(--red); }
+    .log-entry.success { color: var(--accent2); }
+    .log-entry.warn { color: var(--amber); }
+
+    /* ── Pulse animation ── */
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+    .pulsing { animation: pulse 1.5s ease-in-out infinite; }
+
+    /* ── Footer ── */
+    footer {
+      padding: 20px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">⚡ SKiDL Agent</div>
+    <div class="tagline">KiCad schematic generation from natural language</div>
+    <nav>
+      <a href="/runs" id="history-link">History</a>
+      <a href="https://github.com/devbisme/skidl" target="_blank">SKiDL Docs</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <h1>Describe your circuit,<br/><span>get a KiCad schematic.</span></h1>
+      <p>The agent plans, writes SKiDL Python, runs it, and validates ERC — automatically.</p>
+    </div>
+
+    <form id="gen-form">
+      <div class="card">
+        <label for="description">Circuit Description</label>
+        <textarea
+          id="description"
+          name="description"
+          placeholder="e.g. RTD temperature readout circuit using a PT100 sensor with 4-wire measurement, LM324 op-amp current source, instrumentation amplifier, 12-bit SPI ADC, and ESP32-S3 microcontroller for WiFi data logging..."
+          required
+        ></textarea>
+        <div class="examples">
+          <span class="example-chip" onclick="setExample(this)">RTD PT100 readout with ESP32-S3</span>
+          <span class="example-chip" onclick="setExample(this)">555 timer astable oscillator with LED blinker</span>
+          <span class="example-chip" onclick="setExample(this)">3.3V LDO voltage regulator with reverse polarity protection</span>
+          <span class="example-chip" onclick="setExample(this)">Differential pressure sensor bridge amplifier</span>
+          <span class="example-chip" onclick="setExample(this)">I2C OLED display driver with ATmega328</span>
+        </div>
+
+        <div class="model-row">
+          <div>
+            <label>Planner Model</label>
+            <select name="planner_model" id="planner-model">
+              <option value="gemini/gemini-2.5-pro">Gemini 2.5 Pro</option>
+              <option value="gpt-4o">GPT-4o</option>
+              <option value="claude-3-7-sonnet-20250219">Claude 3.7 Sonnet</option>
+              <option value="gemini/gemini-2.5-flash">Gemini 2.5 Flash</option>
+              <option value="groq/llama-3.3-70b-versatile">Llama 3.3 70B (Groq)</option>
+              <option value="ollama/llama3.3:70b">Llama 3.3 (Local)</option>
+            </select>
+          </div>
+          <div>
+            <label>Code Gen / Debug Model</label>
+            <select name="codegen_model" id="codegen-model">
+              <option value="gemini/gemini-2.5-flash">Gemini 2.5 Flash</option>
+              <option value="gpt-4o">GPT-4o</option>
+              <option value="claude-3-7-sonnet-20250219">Claude 3.7 Sonnet</option>
+              <option value="gemini/gemini-2.5-pro">Gemini 2.5 Pro</option>
+              <option value="groq/llama-3.3-70b-versatile">Llama 3.3 70B (Groq)</option>
+              <option value="ollama/deepseek-coder-v2:16b">DeepSeek Coder (Local)</option>
+            </select>
+          </div>
+          <div>
+            <label>Max Retries</label>
+            <input type="number" name="max_retries" value="8" min="1" max="20"/>
+          </div>
+        </div>
+
+        <button type="submit" id="generate-btn">
+          <span class="btn-icon">⚡</span> Generate Circuit
+        </button>
+      </div>
+    </form>
+
+    <div id="progress-section">
+      <div class="card">
+        <label id="progress-label" class="pulsing">⏳ Agent running...</label>
+        <div class="log-box" id="log-box"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer>Built with SKiDL · KiCad 5 · FastAPI · litellm</footer>
+
+  <script>
+    function setExample(el) {
+      document.getElementById('description').value = el.textContent.trim();
+    }
+
+    const form = document.getElementById('gen-form');
+    const btn = document.getElementById('generate-btn');
+    const progressSection = document.getElementById('progress-section');
+    const logBox = document.getElementById('log-box');
+    const progressLabel = document.getElementById('progress-label');
+
+    function appendLog(msg, cls = '') {
+      const p = document.createElement('p');
+      p.className = 'log-entry ' + cls;
+      p.textContent = msg;
+      logBox.appendChild(p);
+      logBox.scrollTop = logBox.scrollHeight;
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+
+      btn.disabled = true;
+      btn.innerHTML = '<span class="btn-icon pulsing">⏳</span> Generating...';
+      progressSection.classList.add('visible');
+      logBox.innerHTML = '';
+
+      const response = await fetch('/generate', { method: 'POST', body: data });
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        const chunk = decoder.decode(value);
+        const lines = chunk.split('\n');
+        for (const line of lines) {
+          if (!line.startsWith('data:')) continue;
+          const payload = JSON.parse(line.slice(5).trim());
+
+          if (payload.type === 'progress') {
+            const msg = payload.message;
+            const cls = msg.includes('ERROR') || msg.includes('❌') ? 'error'
+                      : msg.includes('✅') || msg.includes('SUCCESS') ? 'success'
+                      : msg.includes('⚠️') ? 'warn' : '';
+            appendLog(msg, cls);
+          } else if (payload.type === 'done') {
+            progressLabel.textContent = '✅ Done!';
+            progressLabel.classList.remove('pulsing');
+            appendLog('✅ Complete! Loading results...', 'success');
+            setTimeout(() => {
+              window.location.href = '/result/' + payload.run_id;
+            }, 800);
+          } else if (payload.type === 'error') {
+            progressLabel.textContent = '❌ Error';
+            progressLabel.classList.remove('pulsing');
+            appendLog('ERROR: ' + payload.message, 'error');
+            btn.disabled = false;
+            btn.innerHTML = '<span class="btn-icon">⚡</span> Try Again';
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
